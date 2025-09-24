@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كيفية رفع موقع على Google Cloud</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fdfaf6;
+            --primary-color: #e6cde0; /* Pinkish color */
+            --secondary-color: #d1b8a5; /* Beige accent */
+            --text-color: #5d524a;
+            --heading-color: #a27b72;
+            --white-color: #ffffff;
+            --box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .header {
+            background-image: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+            color: var(--white-color);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+        
+        .header h1 {
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .step {
+            background-color: var(--white-color);
+            margin-bottom: 2.5rem;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: var(--box-shadow);
+            border: 1px solid #f0e9e4;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+
+        .step h2 {
+            color: var(--heading-color);
+            font-weight: 700;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .step img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 2px solid #f0e9e4;
+        }
+
+        .footer {
+            background-color: #433b36;
+            color: var(--white-color);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        code {
+            background-color: #fcefee;
+            padding: 4px 8px;
+            border-radius: 6px;
+            color: #c75d7b;
+            font-weight: bold;
+        }
+        
+        a {
+            color: var(--heading-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 960px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1>☁️ دليلك الأنيق لرفع موقعك على Google Cloud</h1>
+            <p class="lead">خطوات بسيطة ومصورة لنشر موقعك بكل سهولة</p>
+        </div>
+    </header>
+
+    <main class="container my-5 pt-4">
+
+        <section class="step" id="step1">
+            <h2>الخطوة 1: إنشاء مشروع جديد</h2>
+            <p>
+                أولاً، توجه إلى <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a>. المشروع هو المساحة الأساسية التي ستضم كل مواردك السحابية. إذا لم يكن لديك مشروع، قم بإنشاء واحد جديد.
+            </p>
+            <img src="https://storage.googleapis.com/support-kms-prod/SNP_4163265_en_v0" alt="إنشاء مشروع جديد في Google Cloud">
+        </section>
+        
+        <section class="step" id="step2">
+            <h2>الخطوة 2: إنشاء حاوية التخزين (Bucket)</h2>
+            <p>
+                من القائمة، اذهب إلى <strong>Cloud Storage</strong> ثم <strong>Buckets</strong> وانقر على <strong>Create Bucket</strong>. هذه الحاوية هي المكان الذي ستضع فيه ملفات موقعك.
+            </p>
+            <ul>
+                <li><strong>اختر اسمًا فريدًا للحاوية:</strong> يفضل أن يكون نفس اسم نطاق موقعك (مثال: <code>www.my-beautiful-site.com</code>).</li>
+                <li><strong>اختر موقعًا للبيانات (Region):</strong> اختر الموقع الأقرب لجمهورك لتحسين السرعة.</li>
+                <li><strong>التحكم في الوصول (Access control):</strong> اختر <code>Fine-grained</code> لإدارة الأذونات بدقة.</li>
+            </ul>
+            <img src="https://cloud.google.com/static/storage/docs/images/create-bucket.png" alt="إنشاء حاوية تخزين">
+        </section>
+
+        <section class="step" id="step3">
+            <h2>الخطوة 3: رفع ملفات موقعك</h2>
+            <p>
+                بعد إنشاء الحاوية، افتحها وارفع جميع ملفات موقعك (<code>index.html</code>, ملفات الـ CSS, والصور). يمكنك سحب وإفلات الملفات مباشرة في المتصفح.
+            </p>
+            <img src="https://cloud.google.com/static/storage/docs/images/upload-folder.png" alt="رفع الملفات إلى الحاوية">
+        </section>
+
+        <section class="step" id="step4">
+            <h2>الخطوة 4: السماح بالوصول العام</h2>
+            <p>
+                لنجعل الموقع مرئياً للجميع، يجب تعديل الأذونات. اذهب إلى تبويب <strong>Permissions</strong> وانقر على <strong>Grant Access</strong>.
+            </p>
+            <ol>
+                <li>في حقل "New principals"، أضف <code>allUsers</code>.</li>
+                <li>في حقل "Assign roles"، اختر دور <strong>Storage Object Viewer</strong>.</li>
+                <li>احفظ التغييرات. سيظهر تحذير بأن الحاوية أصبحت عامة، وهذا ما نريده.</li>
+            </ol>
+            <img src="https://cloud.google.com/static/storage/docs/images/storage-add-principals-to-bucket-level-policy-v2.png" alt="تعيين الأذونات العامة">
+        </section>
+
+        <section class="step" id="step5">
+            <h2>الخطوة 5: تكوين الموقع الإلكتروني</h2>
+            <p>
+                اللمسة الأخيرة هي إخبار Google Cloud بأن هذه الحاوية هي موقع إلكتروني. من إعدادات الحاوية، اختر <strong>Edit website configuration</strong>.
+            </p>
+            <ol>
+                <li>في حقل "Index page"، أدخل اسم ملفك الرئيسي (عادةً <code>index.html</code>).</li>
+                <li>(اختياري) يمكنك تحديد صفحة للخطأ 404 في الحقل المخصص.</li>
+                <li>انقر على <strong>Save</strong>.</li>
+            </ol>
+            <p class="mt-4">
+                🎉 <strong>تهانينا!</strong> موقعك الآن متصل بالإنترنت. يمكنك الوصول إليه عبر الرابط العام الذي يظهر بصيغة: <code>https://storage.googleapis.com/YOUR_BUCKET_NAME/index.html</code>
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>تم التصميم بحب ❤️</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
